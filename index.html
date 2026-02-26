@@ -594,7 +594,46 @@
 .liftCard:active{
   transform: translateY(-3px) scale(.99);
 }
+  /* Contact Image Blue Lift */
+.right.liftCardBlue{
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all .2s ease;
+}
 
+/* BLUE EDGE */
+.right.liftCardBlue::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  padding:1px;
+  background:linear-gradient(135deg,#2b8cff,#3ba3ff,#2b8cff);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  opacity:0;
+  transition:opacity .2s ease;
+}
+
+/* HOVER */
+.right.liftCardBlue:hover{
+  transform: translateY(-6px);
+  box-shadow:
+    0 0 12px rgba(59,163,255,0.5),
+    0 0 28px rgba(59,163,255,0.3);
+}
+
+.right.liftCardBlue:hover::before{
+  opacity:1;
+}
+
+.right.liftCardBlue:active{
+  transform: translateY(-3px) scale(.99);
+}
 }
   </style>
 </head>
@@ -958,7 +997,7 @@ Support utilities used for assisting enterprise users and resolving email access
         </div>
       </div>
 
-      <div class="right">
+      <div class="right liftCardBlue">
         <!-- ✅ Only image changed -->
         <img src="images/icons/Customer%20Support%20Remote.jpg" alt="Customer Support While Remote" />
       </div>
