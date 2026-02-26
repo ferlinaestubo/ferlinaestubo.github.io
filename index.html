@@ -634,6 +634,50 @@
 .right.liftCardBlue:active{
   transform: translateY(-3px) scale(.99);
 }
+  /* Make experience list items behave like cards */
+.list .item{
+  position: relative;
+  border-radius: 16px;
+  padding: 16px 16px;
+  margin-bottom: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(0,0,0,0.12); /* subtle card feel */
+  transition: all .2s ease;
+  overflow: hidden;
+}
+
+/* Green edge glow like liftCard */
+.list .item::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  padding:1px;
+  background:linear-gradient(135deg,#00ff9c,#00c86f,#00ff9c);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  opacity:0;
+  transition:opacity .2s ease;
+  pointer-events:none;
+}
+
+.list .item:hover{
+  transform: translateY(-6px);
+  box-shadow:
+    0 0 12px rgba(0,255,156,0.4),
+    0 0 28px rgba(0,255,156,0.25);
+}
+
+.list .item:hover::before{
+  opacity:1;
+}
+
+.list .item:active{
+  transform: translateY(-3px) scale(.99);
+}
 }
   </style>
 </head>
