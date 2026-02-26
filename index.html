@@ -546,6 +546,43 @@
       0 0 0 2px rgba(25,255,106,.15),
       0 0 30px rgba(0,212,255,.25);
   }
+  /* Live / elevate cards */
+.liftCard{
+  position: relative;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, filter .18s ease;
+  will-change: transform;
+}
+
+/* subtle backlight glow layer */
+.liftCard::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius: inherit;
+  pointer-events:none;
+  opacity:0;
+  transition: opacity .18s ease;
+  filter: blur(10px);
+  background: radial-gradient(120% 120% at 20% 0%,
+    rgba(120, 255, 200, .22) 0%,
+    rgba(120, 255, 200, .10) 35%,
+    rgba(0,0,0,0) 70%
+  );
+}
+
+.liftCard:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,.45);
+}
+
+.liftCard:hover::before{
+  opacity: 1;
+}
+
+.liftCard:active{
+  transform: translateY(-3px) scale(.99);
+}
+
 }
   </style>
 </head>
@@ -606,12 +643,12 @@ domain configuration, and service setup through structured ticket-based workflow
         <p class="prole">Enterprise Service Desk Support • Microsoft 365 • Remote End-User Support</p>
       </div>
 
-      <div class="sideCard">
+      <div class="sideCard liftCard">
         <b>What you can expect</b>
         <span>Remote support for enterprise users including assistance with Microsoft 365 email access, domain configuration, and service setup using structured ticket-based workflows within SLA-driven environments.</span>
       </div>
 
-      <div class="sideCard">
+      <div class="sideCard liftCard">
         <b>Strengths</b>
         Incident handling, structured troubleshooting, accurate ticket documentation, and effective escalation support for enterprise end-users.
       </div>
